@@ -1,51 +1,201 @@
-# Ejercicios propuestos para el 03/11/2021
-## Preparaós para sufrir un poquito ;) 
+# JS exercises of 03/11/2021
 
-### ¿Cómo comenzar el proyecto?
+#### Exercises pre-build arrays and objects:
+```JavaScript
+const exampleArray = [10, 4, 100, 35, 31, 23, 443, 221, 342, 10, 12, 42];
+const shit = ["function", null, function() {}, () => {}, "10", 100, {}];
+const exampleArray2 = [[10, 4, "100", 35, "31", "23", 443, "221", "342", 10, 12, 42]];
+function Point(x, y) {
+    this.x = x;
+    this.y = y;
+};
+```
+### Instructions 
 
-1. Crea un nuevo WorkSpace en GITPOD
-2. Haz un fork del proyecto.
-3. Clona el fork en tu GITPOD `git clone <url>`
-4. Comienza a trabajar :) 
+- Documented code
+- Applying Functional Programming (Separated into functions)
+- The declaration of functions and variables in ENGLISH
+- Applying camel case scripting.
+- Prepare a README file explaining what has been done and including the instructions to execute the project.
 
-### ¿Cómo ejecutar el proyecto?
 
-1. Situate en el directorio del proyecto.
-2. Ejecuta `node index.js`
-3. Verás los resultados por terminal.
+####  1. Create a function that finds the value 4 in the array exampleArray:
+#####  Imperative programing
+**My Code:**
+By using an `object` I saved the position and the value found using a loop and a simple `if` with triple equal, which filters also the type of the item recieved.
+```JavaScript
+ const imperative4thElement = (arr) => {
+    let FourthElement = {
+        value: 0,
+        position: 0
+    };
+    for (let i in arr) {
+        if (arr[i] === 4) {
+            FourthElement.value = arr[i];
+            FourthElement.position = Number(i);
+        }
+    }
+    return FourthElement;
+}
+```
+**Output ex.:**
+```Terminal
+Imperative coding: { value: 4, position: 1 }
+```
+#####  Declarative programming
+**My Code:**
+Using a `.filter` method at the `console.log()` with the following simple algorithm the number 4 was found.
 
-### Instrucciones 
+```JavaScript
+ const declarative4thElement = (item) => item === 4 ? item : null;
+```
+**Output ex.:**
+```Terminal
+Declarative coding result:
+4
+```
+####  2. Create a function that cleans up the shit array using declarative programming (split, join or any of them). The function should only leave the strings as the result.
+**My Code:**
+Using also an `.filter()` method, due I felt it was the most efficient declarative method for coding a small and elegant algorithm, I created this simple filter that discards any element that is not a `string`. 
+```JavaScript
+const filteringStrings = (item) => typeof item === "string" ? item : null;
+```
+**Output ex.:**
+```Terminal
+Shit array with strings only: function,10
+```
+_And yes, I added a `"10"` string to the original array._
 
-- Código documentado
-- Aplicando programación funcional (Separado en funciones)
-- La declaracion de funciones y variables en INGLES
-- Aplicando escritura camel case.
-- Elaborar un archivo README explicando lo hecho y incluyendo las instrucciones para ejecutar el proyecto.
+#### 3. Create a function that calculates the distance between two points using the object I provide you as Point, you must use imperative programming for this exercise. Your function must receive two parameters, point a with the coordinates (x1,x2) and point b with the coordinates (y1,y2) and calculate the distance (x2-x1, y2-y1).
 
-### Ejercicios
+**My Code:**
+Using a default object I used a `ternary` conditional `arrow function` to solve the algorithm as effective as possible.
 
-**PISTA: Antes de usar los arrays deberás limpiarlo**
+```JavaScript
+const distanceCalculation = (pointA, pointB) => ((pointA instanceof Point && pointB instanceof Point) ? new Point((pointB.x - pointA.x), (pointB.y - pointA.y)) : null)
 
-1. Crea una funcion que encuentre el valor 4 en el array exampleArray 
- - Debes crear un algoritmo usando programación imperativa 
- - Debes crear otro algoritmo usando programación declarativa (filter, split, reduce o cualquierda de ellas que manipulen arrays)
-2. Crea una funcion que limpie el array shit usando programación declarativa (split, join o cualquiera de ellas). La función solo debe dejar los strings como resultado.
-3. Crea una función que calcule la distancia entre dos puntos usando el objeto que yo te proporcionono como Point, debes usar programación imperativa para este ejericio. Tu funcion debe recibir dos parametros, punto a compuesto por las coordenadas (x1,x2) y punto b con las coordenadas (y1,y2) y calcular la distancia (x2-x1, y2-y1).
-4. Crear una función que compare los valores de exampleArray2 y exampleArray1 pero que se fije en el tipo. Si el array es más corto debe parar de comparar en el de menor longitud.
+```
+**Output ex.:**
+```Terminal
+The distance between the two points registered is:  Point { x: 4, y: -6 }
+```
+#### 4. Create a function that compares the values of exampleArray2 and exampleArray1, but stops on the type. If the array is shorter it should stop comparing on the shorter one.
+**My Code:**
+I found myself obliged to use three steps/functions to achieve the desired result.
 
-### ¿Cómo entregar el proyecto?
 
-1. Finaliza todos los ejercicios propuestos y asegurate de que están comentados :) 
-2. Escribeme por Slack @Manu y enviame el Link de tu repo para poder comprobar los ejercicios.
-3. Espera mi respuesta o tus amigos ISSUES por GITHUB
+#####First step: THE MATRIX RENDER
+```JavaScript
+const render = (matrix, internalResponse = []) => {
+    
+    if (!Array.isArray(matrix)) {
+      if (!typeof internalResponse === 'undefined') return;
+      else return "Error trying to load matrix";
+    }
+    
+    matrix.forEach((rhs) => {
+      if (typeof rhs === 'number' || typeof rhs === 'string') internalResponse.push(rhs);
+      return render(rhs, internalResponse);
+    });
+    return internalResponse;
+  }
+```
+I made both of them pass the render to ensure that the `arrays` received were no more considered as `matrix` for the nexts steps be easier to manipulate them.
+##### Second step: THE ARRAY COMPARATOR
+I first needed to compare the length of both arrays to make the shorter one dictate the iterations in the loops that need to be used to evaluate each of the positions within them.
 
-### Contribuciones
+So I made a function that would compare the length and according to it call another function passing it the arrays to evaluate in a strategic position so that it would always iterate the values according to the maximum length of the smaller one.
+```JavaScript
+const arrayComparator = (arr1, arr2) => {
+    let neatArray1 = render(arr1);
+    let neatArray2 = render(arr2);
+	
+    if (neatArray1.length > neatArray2.length) 
+    {
+        console.log(`First array is longer by ${neatArray1.length - neatArray2.length}`)
+        return valueComparator(neatArray2, neatArray1);
+    } 
+    else if (neatArray1.length = neatArray2.length) 
+    {
+        console.log(`Both arrays have the same length ${neatArray1.length} = ${neatArray2.length}`)
+        return valueComparator(neatArray1, neatArray2);
+    } 
+    else 
+    {
+        console.log (`The second array is longer by ${neatArray2.length - neatArray1.length}`)
+        return valueComparator(neatArray1, neatArray2);
+    }
+};
+```
+As you can see in the code I used two new `vars` to save the `rendered` arrays and make them suitable for the process.
 
-Si ves algun fallo en estas instrucciones recuerda que soy **HUMANO**
-Puedes hacer un PULL-REQUEST y estaré encantado de aceptartelo siempre y cuando contenga información relevante. 
+Each condition logs out a declaration of which array is _longer_ and the length of each one!
 
-### Ultimas cosas
+Also you can point out that a new function is called insite each condition. What leads me to the following step:
+##### Third step: THE VALUE COMPARATOR
+```JavaScript
+const valueComparator = (arr1, arr2) => {
 
-Recuerda que soy un maniático del orden y la jerarquía, asegurate que tus funciones están optimizadas, comentadas y tabuladas correctamente, si no tendrás que corregirlo.
+    function Comparator (i, string ,type, type2) {
+        this.id = i;
+        this.comparation = string;
+        this.arr1Type = type;
+        this.arr2Type = type2;
+    };
 
-Divierte escribiendo código en JS a mi salud!!
+    let comparation = "";
+    let comparationArr = [];
+	
+    const isCompared = (item, value) => 
+        Number(item) > Number(value) ? 
+            `${item} > ${value}` : 
+            Number(item) == Number(value) ? 
+                `${item} = ${value}` : 
+                `${item} < ${value}`;
+    for (let i = 0; i < arr1.length; i++) {
+       comparation = new Comparator(
+            i,
+            isCompared(arr1[i], arr2[i]),
+            typeof arr1[i],
+            typeof arr2[i]
+            );
+        comparationArr.push(comparation);  
+    };
+return comparationArr;
+}
+```
+Finally you can appreciate that I didn't want a small info output, I wanted to be **clear** and **complete**. Each value compared to the value from the other array at the same position. So I figured out the best way was to create a `dictionary object` for each item from the **smallest** array. 
+
+Due that the dictionary is declared as a function I had to create a new `var` to store each comparison's iteration and an `Array` to store the iterations one by one using a `.push()` method being the winner var to be `returned`. 
+
+~~_GASP Too much info ..._ ~~:stuck_out_tongue: 
+
+So! **TA-DAH!** :joy_cat:
+
+**Output ex.:**
+```Terminal
+Both arrays have the same length 12 = 12
+
+Comparation of each value of the arrays in the same position: [
+  Comparator {
+    id: 0,
+    comparation: '10 = 10',
+    arr1Type: 'number',
+    arr2Type: 'number'
+  },
+  Comparator {
+    id: 1,
+    comparation: '4 = 4',
+    arr1Type: 'number',
+    arr2Type: 'number'
+  },
+  ...
+```
+
+------------
+## How to run it
+Just type `node index.js` into the terminal to run it! 
+
+------------
+> _Thank you for reading,
+>Aslan_
