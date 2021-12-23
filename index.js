@@ -30,14 +30,13 @@ console.log();
     return FourthElement;
 }
 
-
 console.log("Imperative coding:",imperative4thElement(exampleArray));
 console.log();
 
 /**
  * !Finder
  * @param {array} arr 
- * @returns Number  4
+ * @returns Number 4
  */
 const declarative4thElement = (item) => item === 4 ? item : null;
 
@@ -75,6 +74,12 @@ function Point(x, y) {
 let a = new Point(5, 8);
 let b = new Point(9, 2);
 
+/**
+ * !Calculator
+ * @param {Object} pointA 
+ * @param {Object} pointB 
+ * @returns new Point object with line calculation between two points
+ */
 const distanceCalculation = (pointA, pointB) => ((pointA instanceof Point && pointB instanceof Point) ? new Point((pointB.x - pointA.x), (pointB.y - pointA.y)) : null)
 
 console.log('The distance between the two points registered is: ',distanceCalculation(a,b));
@@ -84,6 +89,12 @@ console.log('-------------------------------------------')
 console.log('||Exercise 4||');
 console.log();
 
+/**
+ * !Convertor
+ * @param {Matrix} matrix 
+ * @param {Array} internalResponse 
+ * @returns 1dimention Array from matrix
+ */
 const render = (matrix, internalResponse = []) => {
     //comprobar que ya es numero
     if (!Array.isArray(matrix)) {
@@ -99,26 +110,10 @@ const render = (matrix, internalResponse = []) => {
   }
 
 /**
- * !Convertor
- * @param {*} item 
- * @returns {Number} item
- * @returns {Null} item
- */
-const number = (item) =>  isNaN(item) === true ? null : Number(item); 
-
-/**
- * !Filter
- * @param {*} item 
- * @returns {Number}
- */
-const filteringNulls = (item) => typeof item === "null" ? null : item;
-
-/**
  * !Comparator
- * ?Compares the VALUES
  * @param {Array} arr1 
  * @param {Array} arr2 
- * @returns {Array of objects} comparationArr
+ * @returns Array of objects with comparison of values
  */
 const valueComparator = (arr1, arr2) => {
 
@@ -136,7 +131,7 @@ const valueComparator = (arr1, arr2) => {
      * !Comparator
      * @param {number || numberString} item 
      * @param {number || numberString} value 
-     * @returns {string} compared item and value
+     * @returns string with a comparison of item and value
      */
     const isCompared = (item, value) => 
         Number(item) > Number(value) ? 
