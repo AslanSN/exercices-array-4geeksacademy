@@ -2,7 +2,7 @@ const exampleArray = [10, 4, 100, 35, 31, 23, 443, 221, 342, 10, 12, 42];
 const shit = ["function", null, function() {}, () => {}, "10", 100, {}];
 const exampleArray2 = [
     [10, 4, "100", 35, "31", "23", 443, "221", "342", 10, 12, 42]
-]
+];
 
 
 console.log(`||Exercise 1||`);
@@ -11,14 +11,14 @@ console.log();
 /**
  * !Finder
  * @param {array} arr 
- * @returns {Number} ? 4
+ * @returns Number 4
  */
  const imperative4thElement = (arr) => {
 
     let FourthElement = {
         value: 0,
         position: 0
-    }
+    };
 
     for (let i in arr) {
         if (arr[i] === 4) {
@@ -53,7 +53,7 @@ console.log('-------------------------------------------')
  * @param {*} item 
  * @returns {string} string
  */
-const filteringStrings = (item) => typeof item === "string" ? item : null;
+ const filteringStrings = (item) => typeof item === "string" ? item : null;
 
 
 console.log(`||EXERCISE 2||`);
@@ -69,7 +69,7 @@ console.log();
 function Point(x, y) {
     this.x = x;
     this.y = y;
-}
+};
 
 let a = new Point(5, 8);
 let b = new Point(9, 2);
@@ -82,7 +82,7 @@ let b = new Point(9, 2);
  */
 const distanceCalculation = (pointA, pointB) => ((pointA instanceof Point && pointB instanceof Point) ? new Point((pointB.x - pointA.x), (pointB.y - pointA.y)) : null)
 
-console.log('The distance between the two points registered is: ',distanceCalculation(a,b));
+console.log('The distance between the two points registered is: ', distanceCalculation(a,b));
 console.log('-------------------------------------------')
 
 
@@ -93,15 +93,15 @@ console.log();
  * !Convertor
  * @param {Matrix} matrix 
  * @param {Array} internalResponse 
- * @returns 1dimention Array from matrix
+ * @returns 1dimension Array from matrix
  */
 const render = (matrix, internalResponse = []) => {
-    //comprobar que ya es numero
+    
     if (!Array.isArray(matrix)) {
       if (!typeof internalResponse === 'undefined') return;
       else return "Error trying to load matrix";
     }
-    //seguir descomponiendo la matriz
+    
     matrix.forEach((rhs) => {
       if (typeof rhs === 'number' || typeof rhs === 'string') internalResponse.push(rhs);
       return render(rhs, internalResponse);
@@ -122,7 +122,7 @@ const valueComparator = (arr1, arr2) => {
         this.comparation = string;
         this.arr1Type = type;
         this.arr2Type = type2;
-    }
+    };
 
     let comparation = "";
     let comparationArr = [];
