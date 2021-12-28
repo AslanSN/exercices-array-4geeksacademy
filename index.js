@@ -1,4 +1,4 @@
-const exampleArray = [10, 4, 100, 35, 31, 23, 443, 221, 342, 10, 12, 42];
+const exampleArray = [10, 4, 100, 35, 31, 23, 443, 221, 342, 10, 4, 12, 42, 1, 1];
 const shit = ["function", null, function() {}, () => {}, "10", 100, {}];
 const exampleArray2 = [
     [10, 4, "100", 35, "31", "23", 443, "221", "342", 10, 12, 42]
@@ -9,28 +9,78 @@ console.log(`||Exercise 1||`);
 console.log();
 
 /**
+ * !MergeSort Merger
+ * @param {Array} arrLeft 
+ * @param {Array} arrRight 
+ * @returns merged Arrays
+ */
+ const mergeArrays = (arrLeft, arrRight) => {
+    const array = []
+  
+    while (arrLeft.length && arrRight.length) {
+      array.push(arrLeft[0] < arrRight[0] ? arrLeft.shift() : arrRight.shift())
+    }
+  
+    
+    while (arrLeft.length) {
+      array.push(arrLeft.shift())
+    };
+    while (arrRight.length) {
+      array.push(arrRight.shift())
+    };
+  
+    return array;
+  }
+
+/**
+ * !MergeSort Splitter
+ * @param {Array} arr 
+ * @returns Merge Sort Array
+ */
+const mergeSort = (arr) => {
+    if (arr.length < 2) return arr
+
+    const midth = Math.floor(arr.length / 2);
+
+    const arrLeft = arr.slice(0, midth);
+    const arrRight = arr.slice(midth, arr.length);
+
+    const sortedLeft = mergeSort(arrLeft)
+    const sortedRight = mergeSort(arrRight)
+
+    return mergeArrays(sortedLeft, sortedRight)
+  }
+console.log(`Array merged and sorted: ${mergeSort(exampleArray)}`);
+console.log();
+
+/**
  * !Finder
  * @param {array} arr 
  * @returns Number 4
  */
  const imperative4thElement = (arr) => {
 
-    let FourthElement = {
-        value: 0,
-        position: 0
+    function FourthElement (number, index) {
+        this.value = number,
+        this.position = index
     };
 
-    for (let i in arr) {
-        if (arr[i] == 4) {
-            FourthElement.value = arr[i];
-            FourthElement.position = Number(i);
-        }
-    }
+    let fourths = [];
 
-    return FourthElement;
+    let i = 0;
+
+    while (arr[i] <= 4)
+    {
+        if (arr[i] == 4)
+        {
+            fourths.push(new FourthElement(4, i));
+        }
+        i++;
+    }
+    return fourths;
 }
 
-console.log("Imperative coding:",imperative4thElement(exampleArray));
+console.log("Imperative coding:",imperative4thElement(mergeSort(exampleArray)));
 console.log();
 
 /**
