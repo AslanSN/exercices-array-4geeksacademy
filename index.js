@@ -14,22 +14,23 @@ console.log();
  * @param {Array} arrRight 
  * @returns merged Arrays
  */
- const mergeArrays = (arrLeft, arrRight) => {
+const mergeArrays = (arrLeft, arrRight) => {
     const array = []
-  
+
     while (arrLeft.length && arrRight.length) {
-      array.push(arrLeft[0] < arrRight[0] ? arrLeft.shift() : arrRight.shift())
+        array.push(arrLeft[0] < arrRight[0] ? arrLeft.shift() : arrRight.shift())
     }
 
     while (arrLeft.length) {
-      array.push(arrLeft.shift())
+        array.push(arrLeft.shift())
     };
+
     while (arrRight.length) {
-      array.push(arrRight.shift())
+        array.push(arrRight.shift())
     };
-  
+
     return array;
-  }
+}
 
 /**
  * !MergeSort Splitter
@@ -48,7 +49,8 @@ const mergeSort = (arr) => {
     const sortedRight = mergeSort(arrRight)
 
     return mergeArrays(sortedLeft, sortedRight)
-  }
+}
+
 console.log(`Array merged and sorted: ${mergeSort(exampleArray)}`);
 console.log();
 
@@ -74,6 +76,7 @@ console.log();
         {
             fourths.push(new FourthElement(4, i));
         }
+
         i++;
     }
     return fourths;
@@ -154,8 +157,9 @@ const render = (matrix, internalResponse = []) => {
       if (typeof rhs === 'number' || typeof rhs === 'string') internalResponse.push(rhs);
       return render(rhs, internalResponse);
     });
+
     return internalResponse;
-  }
+}
 
 /**
  * !Comparator
@@ -172,7 +176,6 @@ const valueComparator = (arr1, arr2) => {
         this.arr2Type = type2;
     };
 
-    let comparation = "";
     let comparationArr = [];
 
     /**
@@ -187,15 +190,15 @@ const valueComparator = (arr1, arr2) => {
                 `${item} = ${value}` : `${item} < ${value}`;
 
     for (let i = 0; i < arr1.length; i++) {
-
-       comparation = new Comparator(
-            i,
-            isCompared(arr1[i], arr2[i]),
-            typeof arr1[i],
-            typeof arr2[i]
-            );
         
-        comparationArr.push(comparation);
+        comparationArr.push( 
+            new Comparator(
+                i,
+                isCompared(arr1[i], arr2[i]),
+                typeof arr1[i],
+                typeof arr2[i]
+            )
+        );
         
     };
 
