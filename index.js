@@ -21,7 +21,7 @@ console.log();
     };
 
     for (let i in arr) {
-        if (arr[i] === 4) {
+        if (arr[i] == 4) {
             FourthElement.value = arr[i];
             FourthElement.position = Number(i);
         }
@@ -47,6 +47,8 @@ ${
 }`);
 console.log('-------------------------------------------')
 
+console.log(`||EXERCISE 2||`);
+console.log();
 
 /**
  * !Filter
@@ -55,9 +57,6 @@ console.log('-------------------------------------------')
  */
  const filteringStrings = (item) => typeof item === "string" ? item : null;
 
-
-console.log(`||EXERCISE 2||`);
-console.log();
 console.log(`Shit array with strings only: ${shit.filter(filteringStrings)}`);
 console.log('-------------------------------------------');
 
@@ -135,12 +134,8 @@ const valueComparator = (arr1, arr2) => {
      */
     const isCompared = (item, value) => 
         Number(item) > Number(value) ? 
-
-            `${item} > ${value}` : 
-            Number(item) == Number(value) ? 
-
-                `${item} = ${value}` : 
-                `${item} < ${value}`;
+            `${item} > ${value}` :  Number(item) == Number(value) ? 
+                `${item} = ${value}` : `${item} < ${value}`;
 
     for (let i = 0; i < arr1.length; i++) {
 
