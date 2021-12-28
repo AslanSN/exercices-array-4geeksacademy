@@ -20,8 +20,7 @@ console.log();
     while (arrLeft.length && arrRight.length) {
       array.push(arrLeft[0] < arrRight[0] ? arrLeft.shift() : arrRight.shift())
     }
-  
-    
+
     while (arrLeft.length) {
       array.push(arrLeft.shift())
     };
