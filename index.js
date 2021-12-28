@@ -176,7 +176,7 @@ const arrayComparator = (arr1, arr2) => {
 
         return valueComparator(neatArray2, neatArray1);
     } 
-    else if (neatArray1.length = neatArray2.length) 
+    else if (neatArray1.length == neatArray2.length) 
     {
         console.log(`Both arrays have the same length ${neatArray1.length} = ${neatArray2.length}`)
         console.log();
