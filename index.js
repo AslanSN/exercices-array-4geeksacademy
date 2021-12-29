@@ -67,7 +67,6 @@ console.log();
     };
 
     let fourths = [];
-
     let i = 0;
 
     while (arr[i] <= 4)
@@ -79,6 +78,7 @@ console.log();
 
         i++;
     }
+    
     return fourths;
 }
 

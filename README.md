@@ -1,6 +1,16 @@
 # JS exercises of 03/11/2021
 
-#### Exercises pre-build arrays and objects:
+>## To open and run:
+>
+>The whole code is in just one file called **`index.js`**.
+>
+>So you must use the following `Terminal's command`:
+>
+>```Terminal
+>node index.js
+>```
+
+#### **Exercises pre-build arrays and objects:**
 ```JavaScript
 const exampleArray = [10, 4, 100, 35, 31, 23, 443, 221, 342, 10, 12, 42];
 const shit = ["function", null, function() {}, () => {}, "10", 100, {}];
@@ -10,39 +20,120 @@ function Point(x, y) {
     this.y = y;
 };
 ```
+#### **General Arrays and objects finally used**
+```JavaScript
+const exampleArray = [10, 4, 100, 35, 31, 23, 443, 221, 342, 10, 4, 12, 42, 1, 1];
+const shit = ["function", null, function() {}, () => {}, "10", 100, {}];
+const exampleArray2 = [
+    [10, 4, "100", 35, "31", "23", 443, "221", "342", 10, 12, 42]
+];
+function Point(x, y) {
+    this.x = x;
+    this.y = y;
+};
+```
+**Why?**
+
+To reinforce the output of the 
+
 ### Instructions 
 
-- Documented code
-- Applying Functional Programming (Separated into functions)
-- The declaration of functions and variables in ENGLISH
-- Applying camel case scripting.
-- Prepare a README file explaining what has been done and including the instructions to execute the project.
+- Documented code.
+- Applying Functional Programming (separated into functions).
+- The declaration of functions and variables in ENGLISH.
+- Applying `camelCase` scripting.
+- Prepare a `README` file explaining what has been done and including the instructions to execute the project.
 
 
-####  1. Create a function that finds the value 4 in the array exampleArray:
-#####  Imperative programing
+##  1. Create a function that finds the value 4 in the array exampleArray:
+
+### Imperative programing
+
 **My Code:**
-By using an `object` I saved the position and the value found using a loop and a simple `if` with triple equal, which filters also the type of the item recieved.
+
+Using a Merge-Sort function splited in two:
+
+- Sorter & merger:
 ```JavaScript
- const imperative4thElement = (arr) => {
-    let FourthElement = {
-        value: 0,
-        position: 0
-    };
-    for (let i in arr) {
-        if (arr[i] === 4) {
-            FourthElement.value = arr[i];
-            FourthElement.position = Number(i);
-        }
+const mergeArrays = (arrLeft, arrRight) => {
+    const array = []
+
+    while (arrLeft.length && arrRight.length) {
+        array.push(arrLeft[0] < arrRight[0] ? arrLeft.shift() : arrRight.shift())
     }
-    return FourthElement;
+
+    while (arrLeft.length) {
+        array.push(arrLeft.shift())
+    };
+
+    while (arrRight.length) {
+        array.push(arrRight.shift())
+    };
+
+    return array;
+}   
+```
+
+- Splitter:
+```JavaScript
+const mergeSort = (arr) => {
+    if (arr.length < 2) return arr
+
+    const midth = Math.floor(arr.length / 2);
+
+    const arrLeft = arr.slice(0, midth);
+    const arrRight = arr.slice(midth, arr.length);
+
+    const sortedLeft = mergeSort(arrLeft)
+    const sortedRight = mergeSort(arrRight)
+
+    return mergeArrays(sortedLeft, sortedRight)
 }
 ```
+I created an arrow function called `imperative4thElement` that has a `dictionary` 
+```JavaScript 
+function FourthElement (number, index) {
+    this.value = number,
+    this.position = index
+};
+```
+that stores the position and the values "`4`" of the array given. This function is intented to be used with a pre-`Merge Sort` array due that use an while loop that stops the seekening while the value at the array is bigger than the number `4`.
+
+There it is the whole **`function`**:
+
+```JavaScript
+const imperative4thElement = (arr) => {
+
+    function FourthElement (number, index) {
+        this.value = number,
+        this.position = index
+    };
+
+    let fourths = [];
+    let i = 0;
+
+    while (arr[i] <= 4)
+    {
+        if (arr[i] == 4)
+        {
+            fourths.push(new FourthElement(4, i));
+        }
+
+        i++;
+    }
+    
+    return fourths;
+}
+```
+
 **Output ex.:**
 ```Terminal
-Imperative coding: { value: 4, position: 1 }
+Imperative coding: [
+  FourthElement { value: 4, position: 2 },
+  FourthElement { value: 4, position: 3 }
+]
 ```
-#####  Declarative programming
+###  Declarative programming
 **My Code:**
 Using a `.filter` method at the `console.log()` with the following simple algorithm the number 4 was found.
 
@@ -54,7 +145,7 @@ Using a `.filter` method at the `console.log()` with the following simple algori
 Declarative coding result:
 4
 ```
-####  2. Create a function that cleans up the shit array using declarative programming (split, join or any of them). The function should only leave the strings as the result.
+##  2. Create a function that cleans up the shit array using declarative programming (split, join or any of them). The function should only leave the strings as the result.
 **My Code:**
 Using also an `.filter()` method, due I felt it was the most efficient declarative method for coding a small and elegant algorithm, I created this simple filter that discards any element that is not a `string`. 
 ```JavaScript
@@ -79,12 +170,15 @@ const distanceCalculation = (pointA, pointB) => ((pointA instanceof Point && poi
 ```Terminal
 The distance between the two points registered is:  Point { x: 4, y: -6 }
 ```
-#### 4. Create a function that compares the values of exampleArray2 and exampleArray1, but stops on the type. If the array is shorter it should stop comparing on the shorter one.
+## 4. Create a function that compares the values of exampleArray2 and exampleArray1, but stops on the type. If the array is shorter it should stop comparing on the shorter one.
+
 **My Code:**
+
 I found myself obliged to use three steps/functions to achieve the desired result.
 
 
-#####First step: THE MATRIX RENDER
+### First step: THE MATRIX RENDER
+
 ```JavaScript
 const render = (matrix, internalResponse = []) => {
     
@@ -101,7 +195,7 @@ const render = (matrix, internalResponse = []) => {
   }
 ```
 I made both of them pass the render to ensure that the `arrays` received were no more considered as `matrix` for the nexts steps be easier to manipulate them.
-##### Second step: THE ARRAY COMPARATOR
+### Second step: THE ARRAY COMPARATOR
 I first needed to compare the length of both arrays to make the shorter one dictate the iterations in the loops that need to be used to evaluate each of the positions within them.
 
 So I made a function that would compare the length and according to it call another function passing it the arrays to evaluate in a strategic position so that it would always iterate the values according to the maximum length of the smaller one.
@@ -193,9 +287,6 @@ Comparation of each value of the arrays in the same position: [
 ```
 
 ------------
-## How to run it
-Just type `node index.js` into the terminal to run it! 
-
-------------
-> _Thank you for reading,
->Aslan_
+> _Thank you for reading,_
+>
+>_Aslan_
