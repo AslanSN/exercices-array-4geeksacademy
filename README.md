@@ -34,7 +34,7 @@ function Point(x, y) {
 ```
 **Why?**
 
-To reinforce the output of the 
+To reinforce the output of the main exercise and to be sure that they work in all scenarios. 😺
 
 ### Instructions 
 
