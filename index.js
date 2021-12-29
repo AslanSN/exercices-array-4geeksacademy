@@ -59,7 +59,7 @@ console.log();
  * @param {array} arr 
  * @returns Number 4
  */
- const imperative4thElement = (arr) => {
+const imperative4thElement = (arr) => {
 
     function FourthElement (number, index) {
         this.value = number,
@@ -80,7 +80,7 @@ console.log();
     }
     
     return fourths;
-}
+};
 
 console.log("Imperative coding:",imperative4thElement(mergeSort(exampleArray)));
 console.log();
@@ -203,7 +203,7 @@ const valueComparator = (arr1, arr2) => {
     };
 
 return comparationArr;
-}
+};
 
 /**
  * !Comparator

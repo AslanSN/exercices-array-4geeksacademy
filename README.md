@@ -191,8 +191,9 @@ const render = (matrix, internalResponse = []) => {
       if (typeof rhs === 'number' || typeof rhs === 'string') internalResponse.push(rhs);
       return render(rhs, internalResponse);
     });
+    
     return internalResponse;
-  }
+};
 ```
 I made both of them pass the render to ensure that the `arrays` received were no more considered as `matrix` for the nexts steps be easier to manipulate them.
 ### Second step: THE ARRAY COMPARATOR
