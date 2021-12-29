@@ -1,4 +1,4 @@
-# JS exercises of 03/11/2021
+# Advanced Array JS exercises
 
 >## To open and run:
 >
