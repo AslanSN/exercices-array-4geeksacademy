@@ -51,7 +51,7 @@ To reinforce the output of the main exercise and to be sure that they work in al
 
 **My Code:**
 
-Using a Merge-Sort function splited in two:
+Using a Merge-Sort function splitted in two:
 
 - Sorter & merger:
 ```JavaScript
