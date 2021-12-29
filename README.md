@@ -1,4 +1,4 @@
-# JS exercises of 03/11/2021
+# Advanced Array JS exercises
 
 >## To open and run:
 >
@@ -34,7 +34,7 @@ function Point(x, y) {
 ```
 **Why?**
 
-To reinforce the output of the 
+To reinforce the output of the main exercise and to be sure that they work in all scenarios. 😺
 
 ### Instructions 
 
@@ -157,7 +157,7 @@ Shit array with strings only: function,10
 ```
 _And yes, I added a `"10"` string to the original array._
 
-#### 3. Create a function that calculates the distance between two points using the object I provide you as Point, you must use imperative programming for this exercise. Your function must receive two parameters, point a with the coordinates (x1,x2) and point b with the coordinates (y1,y2) and calculate the distance (x2-x1, y2-y1).
+## 3. Create a function that calculates the distance between two points using the object I provide you as Point, you must use imperative programming for this exercise. Your function must receive two parameters, point a with the coordinates (x1,x2) and point b with the coordinates (y1,y2) and calculate the distance (x2-x1, y2-y1).
 
 **My Code:**
 Using a default object I used a `ternary` conditional `arrow function` to solve the algorithm as effective as possible.
